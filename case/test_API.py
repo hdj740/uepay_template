@@ -1,5 +1,5 @@
 from logs.log import log1
-from comfig import public_method
+from common import public_method
 import json
 import unittest
 
@@ -18,35 +18,6 @@ jsonObject={
 
 up = public_method.Format(jsonObject)
 
-print('返回参数：', up)
-Result1 = json.loads(up)
 
-try:
-    Result2 = Result1['results']['msg']
-    print(Result2)
-    log1.info(Result2)
-except KeyError  as e:
-    print("KeyError:", e)
-    log1.info("KeyError:", e)
-
-#print(type(Result))     #查看数据类型
-
-# 测试类
-class test_class(unittest.TestCase):
-
-    def test_API(self):
-        b = "您當前是最新版本，無需更新！"
-        self.assertEqual(Result2, b)
-    def test_API1(self):
-        a = 1
-        b = 2
-        self.assertEqual(a, b)
-    def test_API2(self):
-        a = 2
-        b = 2
-        self.assertEqual(a, b)
-
-if __name__ == "__main__":
-    unittest.main()
 
 

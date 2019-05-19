@@ -6,7 +6,8 @@ import unittest
 
 from idna import unicode
 
-from comfig import HTMLTestRunner
+from common import HTMLTestRunner
+
 
 # ----------------------------------------------------------------------
 

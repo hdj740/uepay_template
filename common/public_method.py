@@ -2,24 +2,7 @@ import json
 import requests
 import operator
 import hashlib
-'''
-from uepay.login import Text_20060
 
-jsonObject = Text_20060.jsonObject
-arguments = Text_20060.jsonObject["arguments"] #提取 jsonObject 的 arguments 值
-
-print("获取 jsonObject:",jsonObject)
-print("提取 arguments" ,arguments)
-
-#url = "http://apptest.uepay.mo/app"
-
-def fild():
-    f = open("E:\\uepaytset\\uepay_wallet\\singKey.txt")
-    key=f.read()
-    f.close()
-    print(key)
-    return key
-'''
 
 # 删除字典一项
 def Delete_item(json_parameter):
@@ -39,14 +22,13 @@ def Sort(sort):
 
 #字符替换
 def Replace(replace):
-    keyname = "&key="
-    key = "a0ebce93-809d-4519-82e1-264ee203922f"
+    key = "&key=a0ebce93-809d-4519-82e1-264ee203922f"
     mo = str(replace) # str 转换为字符串类型
     str1 = (mo.replace("', '", "="))
     str2 = (str1.replace("'), ('", "&"))
     str3 = (str2.replace("[('", ""))
     str4 = (str3.replace("')]", ""))
-    k =str4 + keyname +key
+    k =str4 +key
 #    print("整理后的json_parameter：",k)
     return k
 
@@ -61,13 +43,9 @@ def MD5_add(str4):
 #向服务器发送请求
 def Request(test4, jsonObject):
     jsonObject["arguments"]["clientSign"] = test4 #向指点添加值
-    qingqiu = json.dumps(jsonObject) #格式化成json格式
-    print('请求参数：', qingqiu)
+    print(jsonObject)
     header = {"Content-type": "application/json;charset=UTF-8"}  #请求格式
-    #url = requests.post("http://192.168.0.17:13010/app",data=params)
     r = requests.post('http://apptest.uepay.mo/app',json=jsonObject,headers = header)  #请求类型
-#    print(r.text) #返回文本结果
-    print(r.status_code)
     return r.text
 
 def Handle(test5):
@@ -78,8 +56,8 @@ def Handle(test5):
 def Format(jsonObject1):
     jsonObject = jsonObject1
     arguments = jsonObject["arguments"]  # 提取 jsonObject 的 arguments 值
-#    print(jsonObject)
-#    print(arguments)
+    print(jsonObject)
+    print(arguments)
     test1 = Delete_item(arguments)
     print(test1)
     test2 = Sort(test1)

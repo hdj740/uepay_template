@@ -16,7 +16,7 @@ data = {
 }
 
 print(type(data))
-res = request(data)1
+res = request(data)
 
 i1 = json.loads(res.res)
 i2 = json.dumps(i1,indent=4,sort_keys=True)

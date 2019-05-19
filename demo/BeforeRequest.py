@@ -47,12 +47,14 @@ class Run_Request:
 
 class request:
 
-    def Before_request(self):
+    def __init__(self,data):
+        self.res = self.Before_request(data)
 
-        res = requests.post("http://apptest.uepay.mo/app", data=json.dumps(data))
-        result = res
-
-
+    def Before_request(self,data):
+        run = Run_Request(data)
+        dict_data = eval(run.res)
+        res = requests.post("http://apptest.uepay.mo/app", data=json.dumps(dict_data))
+        return res.text
 
 
 if __name__ == "__main__":
@@ -70,7 +72,8 @@ if __name__ == "__main__":
         "requestType": "5004"
     }
 
-    run = Run_Request(data)
+    print(type(data))
+    run = request(data)
 
     print("run" + run.res)
 

@@ -44,7 +44,7 @@ class Run_Request:
         data["arguments"]["clientSign"] = checkReplace
         return data
 
-
+'''
 if __name__ == "__main__":
     data = {
         "arguments":
@@ -64,6 +64,6 @@ if __name__ == "__main__":
 
     print("run"+run.res)
     print(type(run.res))
-
+'''
 
 

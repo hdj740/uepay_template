@@ -1,6 +1,6 @@
 import requests
 import json
-
+from demo.BeforeRequest import request
 
 data = {
             "arguments":
@@ -14,14 +14,17 @@ data = {
             "appVersion": "2.0.0",
             "requestType": "5004"
 }
+
 print(type(data))
+res = request(data)
 
-str_data = str(data)
+i1 = json.loads(res.res)
+i2 = json.dumps(i1,indent=4,sort_keys=True)
+print(i2)
+print(type(i1))
 
-print(type(str_data))
-dict_data = eval(str_data)
 
-print(type(dict_data))
+
 
 
 

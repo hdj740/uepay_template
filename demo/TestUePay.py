@@ -1,8 +1,13 @@
 import requests
 import json
+import unittest
 from demo.BeforeRequest import request
 
-data = {
+class TestMetgod(unittest.TestCase):
+
+
+    def test_03(self):
+        data = {
             "arguments":
                 {
                     "loginName": "18788782150",
@@ -13,17 +18,18 @@ data = {
             "appSource": "ios",
             "appVersion": "2.0.0",
             "requestType": "5004"
-}
-
-print(type(data))
-res = request(data)
-
-i1 = json.loads(res.res)
-i2 = json.dumps(i1,indent=4,sort_keys=True)
-print(i2)
-print(type(i1))
+        }
 
 
+        res = request(data)
+
+        i1 = json.loads(res.res)
+        i2 = json.dumps(i1,indent=4,sort_keys=True)
+        print(i2)
+
+
+if __name__ == "__main__":
+    unittest.main()
 
 
 

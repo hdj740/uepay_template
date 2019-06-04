@@ -44,7 +44,6 @@ class Run_Request:
         data["arguments"]["clientSign"] = checkReplace
         return str(data)
 
-
 class request:
 
     def __init__(self,data):
@@ -55,7 +54,6 @@ class request:
         dict_data = eval(run.res)
         res = requests.post("http://apptest.uepay.mo/app", data=json.dumps(dict_data))
         return res.text
-
 
 if __name__ == "__main__":
     data = {

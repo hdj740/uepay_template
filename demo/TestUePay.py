@@ -1,7 +1,6 @@
-import requests
 import json
 import unittest
-from demo.BeforeRequest import request
+from demo import BeforeRequest
 
 class TestMetgod(unittest.TestCase):
 
@@ -20,12 +19,14 @@ class TestMetgod(unittest.TestCase):
             "requestType": "5004"
         }
 
-
-        res = request(data)
+        print(type(data))
+        res = BeforeRequest.request(data)
 
         i1 = json.loads(res.res)
         i2 = json.dumps(i1,indent=4,sort_keys=True)
         print(i2)
+
+        self.assertTrue(True,msg=False)
 
 
 if __name__ == "__main__":

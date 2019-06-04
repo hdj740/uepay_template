@@ -1,23 +1,16 @@
-from logs.log import log1
-from common import public_method
-import json
-import unittest
+import xlrd
 
-
-jsonObject={
-    "arguments": {
-        "handleType": "1",
-        "userId": "196",
-        "token": "MTIzNDU2Nzg5LDE3OSwyOWFkMGUzZmQzZGI2ODFmYjlmODA5MWM3NTYzMTNm NywxNTUwNzU1NjY0MDkzLGlvcw==",
-        "clientSign": "0ead59fd308773cf9fa74766907e3d1b"
-    },
-    "appSource": "ios",
-    "appVersion": "2.0.0",
-    "requestType": "20060"
-}
-
-up = public_method.Format(jsonObject)
-
-
-
+dir_case = '/home/huang/桌面/test3.xlsx'
+data = xlrd.open_workbook(dir_case)
+table = data.sheets()[1]
+nor = table.nrows
+nol = table.ncols
+print(nol,"列",nor,"行")
+dict = {}
+for i in range(1, nor):
+    for j in range(nol):
+        title = table.cell_value(0, j)
+        value = table.cell_value(i, j)
+        dict[title] = value
+    print(dict)
 
